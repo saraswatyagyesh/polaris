@@ -5,8 +5,7 @@
 - The following are the markers which can be used to identify diffent comments that are linked to same topic
 
   [CLERK] - clerk provider docs
-
-
+  [CONVEX] - Convex client provider docs
 
 
 
@@ -14,11 +13,27 @@
 
 --------------------------------------------------------------------------------*/
 
+/*---------------------------------------------------------------------------------
+- After setting up src/components/providers.tsx file we came here, and now we have to remove the ClerkProvider here
+  - Also, the header needs to be removed too
+  - Following was the return statement, before creating providers.tsx
+  
+
+
+
+---------------------------------------------------------------------------------*/
+
+
 
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+
+// [CONVEX] import the ConvexClientProvider here, then render this around the {children}
+import { ConvexClientProvider } from "@/components/convex-client-provider";
+// [CONVEX] once this is done, then make sure both npm run dev(frntend) and npx convex dev(bckend) are running in terminals
+// [CONVEX] GOTO sec/app/page.tsx
 
 // [CLERK] add the imports for the clerkProvider
 import {
@@ -56,12 +71,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    // [CLERK] Add <ClerkProvider> here
-    <ClerkProvider>
-      <html lang="en" suppressHydrationWarning>
+      // // [CLERK] Add <ClerkProvider> here
+      // <ClerkProvider> - This is to be removed once `providers.tsx` is setup
+
+<html lang="en" suppressHydrationWarning>
+
         <body
           className={`${inter.variable} ${plexMono.variable} antialiased`}
         >
+
           {/* - Add the ThemeProvider component around the child component here 
               - Now we have to add "suppressHydration" warning html tag above
               - Then we can set the theme to dark throgh ThemeProvider
@@ -79,26 +97,48 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <header>
-            {/* [CLERK] Add SignInButton inside SignOut  
-                After this is done, 
-                GOTO notes.md   */}
-            <SignedOut>
-              <SignInButton/>
-              <SignUpButton>
-                <button className="bg-rose-500 text-white">
-                  Sign Up
-                </button>
-              </SignUpButton>
-            </SignedOut>
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
-            </header>
-            {children}
+
+            {/* [CONVEX] The ConvexClientProvider is to be rendered inside ThemerProvider */}
+            <ConvexClientProvider>
+
+              {/* <header>
+              {/* [CLERK] Add SignInButton inside SignOut  
+                  After this is done, 
+                  GOTO notes.md   */}
+
+              <SignedOut>
+
+                <SignInButton/>
+
+                <SignUpButton>
+
+                  <button className="bg-rose-500 text-white">
+
+                    Sign Up
+
+                  </button>
+
+                </SignUpButton>
+
+              </SignedOut>
+
+              <SignedIn>
+
+                <UserButton />
+
+              </SignedIn>
+
+              </header>
+
+              {children}
+
+            </ConvexClientProvider>
+
           </ThemeProvider>
+
         </body>
+
       </html>
-    </ClerkProvider>
+    // </ClerkProvider>
   );
 }

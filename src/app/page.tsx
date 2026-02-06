@@ -57,14 +57,55 @@ export default X;
 
 ------------------------------------------------------------------------------*/
 
+
+/*---------------------------------------------------------------------------------------------
+                            SETTING UP CONVEX HERE
+
+- We will use hooks within this file
+  - To do so, we need to convert it to client component
+- After writing `task.isCompleted` line
+  - GOTO notes.md file coz we need schema
+
+
+- There was "tasks" being used in place of "project/projects" keywords. So don't worry that much
+  - That was just sandboxing
+
+- [CONVEX] We need to protect the data access layer
+  - coz, if someone bypasses. And through protecting each API route individually can we save this
+  - It can be done using CLERK with CONVEX
+  - GOTO notes.md for setting up CLERK with CONVEX
+
+-----------------------------------------------------------------------------------------------*/
+"use client";  // [CONVEX] changing it into client component
+
+
+import { useMutation, useQuery } from "convex/react";
+import { api } from "../../convex/_generated/api"; // [CONVEX] this will give access to Typesafe f() that we developed
+
 import { Button } from "@/components/ui/button";
 
 const X = () => {
+  const projects = useQuery(api.projects.get);
+  const createProject = useMutation(api.projects.create);
+  
+  
   return (
-    <div>
-      <Button variant="destructive">
-        Click me
+    <div className="flex flex-col gap-2">
+      <Button onClick={() => createProject({
+        name: "New Project"
+      })}>
+        Add new
       </Button>
+
+
+
+      {/* [CONVEX]: now we can iterate */}
+      {projects?.map((project) => (
+        <div className="border rounded p-2 flex flex-col" key={project._id}>
+          <p>{project.name}</p>
+          <p>Owner Id: {project.ownerId}</p>
+        </div>
+      ))}
     </div>
   );
 };
