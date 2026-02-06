@@ -12,7 +12,9 @@
 -----------------------------------------------------------------------------------------------------*/
 
 import { ShieldAlertIcon } from "lucide-react";
-import { Item, ItemContent, ItemDescription, ItemMedia, ItemTitle } from "@/components/ui/item";
+import { Item, ItemActions, ItemContent, ItemDescription, ItemMedia, ItemTitle } from "@/components/ui/item";
+import { SignInButton } from "@clerk/nextjs";
+import { Button } from "@/components/ui/button";
 
 
 export const UnauthenticatedView = () => {
@@ -30,6 +32,14 @@ export const UnauthenticatedView = () => {
                         </ItemDescription>
 
                     </ItemContent>
+
+                    <ItemActions>
+                        <SignInButton>
+                            <Button variant="outline" size="sm">
+                                Sign In
+                            </Button>
+                        </SignInButton>
+                    </ItemActions>
                 </Item>
             </div>
         );
