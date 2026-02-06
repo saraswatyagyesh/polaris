@@ -225,6 +225,12 @@
     - With this we will create `localhost:3000/api/demo/blocking` and will use googl's AI at this endpoint
     >- GOTO `blocking/route.ts`
 
+- Once we have setup the API Route for Google's AI and it's UI
+    - We can now start with the Inngest route, (Non-blocking)
+    - As blocking takes too much time 
+
+- Let's start with `Inngest`
+
 
 
 ------------------------------------------------------------------------------
