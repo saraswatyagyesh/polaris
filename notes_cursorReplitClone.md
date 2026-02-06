@@ -206,6 +206,24 @@
 # 5 Background Jobs
 
 - Now Let's begin with setting up our background jobs
+    - Setup AI SDK
+    - Create blocking API route
+    - setup inngest SDK
+    - Create background job
+    - Compare: blocking vs non-blocking
+
+- Setting up AI SDK
+    - For installing the `AI SDK` run `npm i ai@6.0.3` 
+    - Then in the documentation, click to `Providers and models`
+    - It is recommended to use `Anthropic AI providers` because they are dope
+    - In here, we will setup `AI SDK Google` and `AI SDK anthropic` 
+    - Google is free, while Anthropic costs arounf 5 Dollars
+
+- Setting up Google AI provider
+    - To install it, run `npm install @ai-sdk/google@3.0.1` 
+    - Now we will setup an API route in our app, through creating `src/app/api/demo/blocking/route.ts` folder
+    - With this we will create `localhost:3000/api/demo/blocking` and will use googl's AI at this endpoint
+    >- GOTO `blocking/route.ts`
 
 
 
