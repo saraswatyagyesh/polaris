@@ -16,7 +16,12 @@
 /*---------------------------------------------------------------------------------
 - After setting up src/components/providers.tsx file we came here, and now we have to remove the ClerkProvider here
   - Also, the header needs to be removed too
-  - Following was the return statement, before creating providers.tsx
+  - Following is the return statement before creating providers.tsx
+  - All of the ClerkProvider and Header elemets are to be removed 
+  - All the imports from CLERK are also to be removed
+  - Earlier we were using ConvexProvier, but now we are using ConvexProviderWithClerk using the providers module
+  - And we can also shift the theme provider to providers.tsx file too
+
   
 
 
@@ -27,23 +32,25 @@
 
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, Inter } from "next/font/google";
-import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
 
+import { Providers } from "@/components/providers";
+
+
+import "./globals.css";
 // [CONVEX] import the ConvexClientProvider here, then render this around the {children}
 import { ConvexClientProvider } from "@/components/convex-client-provider";
 // [CONVEX] once this is done, then make sure both npm run dev(frntend) and npx convex dev(bckend) are running in terminals
 // [CONVEX] GOTO sec/app/page.tsx
 
 // [CLERK] add the imports for the clerkProvider
-import {
-  ClerkProvider,
-  SignInButton,
-  SignUpButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from '@clerk/nextjs' 
+// import {
+//   ClerkProvider,
+//   SignInButton,
+//   SignUpButton,
+//   SignedIn,
+//   SignedOut,
+//   UserButton,
+// } from '@clerk/nextjs' 
 // now go to return()
 
 // Changing geistSans to Inter
@@ -91,54 +98,54 @@ export default function RootLayout({
               - GOTO notes.md
 
               */}
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem
-            disableTransitionOnChange
-          >
 
             {/* [CONVEX] The ConvexClientProvider is to be rendered inside ThemerProvider */}
-            <ConvexClientProvider>
+            {/* <ConvexClientProvider> */}
 
-              {/* <header>
-              {/* [CLERK] Add SignInButton inside SignOut  
-                  After this is done, 
-                  GOTO notes.md   */}
 
-              <SignedOut>
+              <Providers>
+                {children}
+              </Providers>
 
-                <SignInButton/>
+            {/* </ConvexClientProvider> */}
 
-                <SignUpButton>
-
-                  <button className="bg-rose-500 text-white">
-
-                    Sign Up
-
-                  </button>
-
-                </SignUpButton>
-
-              </SignedOut>
-
-              <SignedIn>
-
-                <UserButton />
-
-              </SignedIn>
-
-              </header>
-
-              {children}
-
-            </ConvexClientProvider>
-
-          </ThemeProvider>
-
+          
         </body>
 
       </html>
     // </ClerkProvider>
   );
 }
+
+
+
+
+// Following is the header removed from the ConvexClientProvider
+              // <header>
+              // {/* [CLERK] Add SignInButton inside SignOut  
+              //     After this is done, 
+              //     GOTO notes.md   */}
+
+              // <SignedOut>
+
+              //   <SignInButton/>
+
+              //   <SignUpButton>
+
+              //     <button className="bg-rose-500 text-white">
+
+              //       Sign Up
+
+              //     </button>
+
+              //   </SignUpButton>
+
+              // </SignedOut>
+
+              // <SignedIn>
+
+              //   <UserButton />
+
+              // </SignedIn>
+
+              // </header>
