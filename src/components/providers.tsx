@@ -16,9 +16,9 @@
 
 "use client";
 
-import { ClerkProvider, useAuth } from "@clerk/nextjs";
+import { ClerkProvider, SignInButton, SignUpButton, useAuth } from "@clerk/nextjs";
 import { ConvexProviderWithClerk } from "convex/react-clerk";
-import { Authenticated, ConvexReactClient } from "convex/react";
+import { Authenticated, AuthLoading, ConvexReactClient, Unauthenticated } from "convex/react";
 import { ThemeProvider } from "@/components/theme-provider";
 
 const convex = new ConvexReactClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
@@ -49,6 +49,15 @@ export const Providers = ({ children }: { children: React.ReactNode }) => {
                     <Authenticated>
                     {children}
                     </Authenticated>
+                    
+                    {/* Once identity is setup in project.ts file, we can begin for Unauthenticated view here */}
+                    <Unauthenticated>
+                        <SignInButton />
+                        <SignUpButton />
+                    </Unauthenticated>
+                    <AuthLoading>
+                        Auth Loading...
+                    </AuthLoading>
                 </ThemeProvider>
 
             </ConvexProviderWithClerk>
