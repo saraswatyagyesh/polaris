@@ -39,6 +39,7 @@ import { Providers } from "@/components/providers";
 import "./globals.css";
 // [CONVEX] import the ConvexClientProvider here, then render this around the {children}
 import { ConvexClientProvider } from "@/components/convex-client-provider";
+import { Authenticated } from "convex/react";
 // [CONVEX] once this is done, then make sure both npm run dev(frntend) and npx convex dev(bckend) are running in terminals
 // [CONVEX] GOTO sec/app/page.tsx
 
@@ -87,18 +88,9 @@ export default function RootLayout({
           className={`${inter.variable} ${plexMono.variable} antialiased`}
         >
 
-          {/* - Add the ThemeProvider component around the child component here 
-              - Now we have to add "suppressHydration" warning html tag above
-              - Then we can set the theme to dark throgh ThemeProvider
-              - This way in future you can change the theme to light or dark throgh the ThemeProvider component
-              - Since we are in this layout file, let's modify fonts which are at top
-                - This will however not change the font entirely, you have to modify the global.css file too
-                - That you can do as homework
+          
 
-              - GOTO notes.md
-
-              */}
-
+            {/* ThemeProvider is shifted to providers.tsx file */}
             {/* [CONVEX] The ConvexClientProvider is to be rendered inside ThemerProvider */}
             {/* <ConvexClientProvider> */}
 

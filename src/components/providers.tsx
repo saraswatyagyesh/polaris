@@ -27,6 +27,19 @@ export const Providers = ({ children }: { children: React.ReactNode }) => {
     return (
         <ClerkProvider>
             <ConvexProviderWithClerk client={convex} useAuth={useAuth}>
+                
+                {/* - Add the ThemeProvider component around the child component here 
+              - Now we have to add "suppressHydration" warning html tag above
+              - Then we can set the theme to dark throgh ThemeProvider
+              - This way in future you can change the theme to light or dark throgh the ThemeProvider component
+              - Since we are in this layout file, let's modify fonts which are at top
+                - This will however not change the font entirely, you have to modify the global.css file too
+                - That you can do as homework
+
+              - GOTO notes.md
+
+              */}
+                
                 <ThemeProvider
                     attribute="class"
                     defaultTheme="dark"
