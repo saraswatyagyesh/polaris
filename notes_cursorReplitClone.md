@@ -230,6 +230,13 @@
     - As blocking takes too much time 
 
 - Let's start with `Inngest`
+    - Untill it does not come to deployment, you don't primarily need an account setup for inngest at all. 
+    - Simply go to the documentation and start with NextJS section
+    - To install inngest run `npm install inngest@3.48.1` 
+    - Next we have to run innges dev server by running `npm --ignore-script=false inngest-cli@latest dev`
+    - It will spin up a local instance of inngest at `localhost:8288`
+    - In order to connect inngest to our project we need to create `src/inngest/client.ts`
+    >- GOTO `src/inngest/client.ts`
 
 
 
