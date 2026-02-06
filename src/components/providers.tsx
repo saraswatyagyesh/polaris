@@ -16,7 +16,7 @@
 
 "use client";
 
-import { ClerkProvider, SignInButton, SignUpButton, useAuth } from "@clerk/nextjs";
+import { ClerkProvider, SignInButton, SignUpButton, useAuth, UserButton } from "@clerk/nextjs";
 import { ConvexProviderWithClerk } from "convex/react-clerk";
 import { Authenticated, AuthLoading, ConvexReactClient, Unauthenticated } from "convex/react";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -46,14 +46,18 @@ export const Providers = ({ children }: { children: React.ReactNode }) => {
                     enableSystem
                     disableTransitionOnChange
                 >
+                    {/* MAKE SURE CLERK ENV VARS ARE ESTABLISHED IN .env.local FILE */}
                     <Authenticated>
-                    {children}
+                        <UserButton />
+                        {children}
                     </Authenticated>
                     
                     {/* Once identity is setup in project.ts file, we can begin for Unauthenticated view here */}
                     <Unauthenticated>
+
                         <SignInButton />
                         <SignUpButton />
+                    
                     </Unauthenticated>
                     <AuthLoading>
                         Auth Loading...

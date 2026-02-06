@@ -47,7 +47,7 @@ export const get = query({
             throw new Error("Unauthorized");
         }
 
-
-        return await ctx.db.query("projects").collect();
+        // returning a query that show projects of the loggedIn user only
+        return await ctx.db.query("projects").withIndex("by_owner", (q) => q.eq("ownerId", identity.subject)).collect();
     },
 })
