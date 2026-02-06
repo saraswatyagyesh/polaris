@@ -18,7 +18,7 @@
 
 import { ClerkProvider, useAuth } from "@clerk/nextjs";
 import { ConvexProviderWithClerk } from "convex/react-clerk";
-import { ConvexReactClient } from "convex/react";
+import { Authenticated, ConvexReactClient } from "convex/react";
 import { ThemeProvider } from "@/components/theme-provider";
 
 const convex = new ConvexReactClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
@@ -46,7 +46,9 @@ export const Providers = ({ children }: { children: React.ReactNode }) => {
                     enableSystem
                     disableTransitionOnChange
                 >
+                    <Authenticated>
                     {children}
+                    </Authenticated>
                 </ThemeProvider>
 
             </ConvexProviderWithClerk>

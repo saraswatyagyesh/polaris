@@ -9,6 +9,7 @@
 
 - We have created a UI for the providers in providers.tsx, here we will learn to use Clerk's authentication in convex provider now
     - We will try to extract current user, in the get
+    - Once identity is established in both create and get, head over to providers.tsx to setup Unauthorized view   
 
 
 
@@ -22,9 +23,16 @@ export const create = mutation({
         name: v.string(),
     },
     handler: async (ctx, args) => {
+        const identity = await ctx.auth.getUserIdentity();
+
+        if (!identity) {
+            // throw new Error("Unauthorized");
+            return [];
+        }
+
         await ctx.db.insert("projects", {
             name: args.name,
-            ownerId: "123",
+            ownerId: identity?.subject,
         });
     },
 });
