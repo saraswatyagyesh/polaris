@@ -9,6 +9,12 @@
 - Once you setup and register a function, you can restart both the inngest server and the app to get to the dashboard
     - There you should get the auto-detected tag 
     - And under the functions tab, there will be our function
+    - There you can invoke the function
+    - use {
+        "data" : { "bussiness@codewithyagyesh.com" }
+    }
+    - And invoke it, this will wait for a moment and sent the data we structured here in return statememt
+    
 
 --------------------------------------------------------------------------------------------------------------*/
 import { inngest } from "./client";
