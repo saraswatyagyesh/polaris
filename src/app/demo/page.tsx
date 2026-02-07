@@ -19,26 +19,43 @@
     - GOTO notes.md for further points
 
 
+- When we will come from `background/rotue.ts` for non-blocking
+    - We create handleBackground function below handleBlocking function
+    - Make sure to set different loading states for Blocking and Background routes
+    - This way you can understand working and difference btw blocking and non blocking aka background
+    - With non blocking multiple background jobs can be triggered 
+    - GOTO notes.md for further details about AgentKit
+
 ------------------------------------------------------------------------------------------------------------------*/
 
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
 export default function DemoPage() {
-    const [loading, setLoading] = useState(false);
+    const [loadingBlocking, setLoadingBlocking] = useState(false);
+    const [loadingBackground, setLoadingBackground] = useState(false);
 
     // create a handleBlocking function 
     const handleBlocking = async () => {
-        setLoading(true);
+        setLoadingBlocking(true);
         await fetch("api/demo/blocking", {method: "POST"});
-        setLoading(false);
+        setLoadingBlocking(false);
+    };
+
+    const handleBackground = async () => {
+        setLoadingBackground(true);
+        await fetch("/api/demo/background", { method: "POST" });
+        setLoadingBackground(false);
     };
     
     
     return (
         <div className="p-8 space-x-4">
-            <Button disabled={loading} onClick={handleBlocking}>
-                {loading ? "Loading..." : "Blocking"}
+            <Button disabled={loadingBlocking} onClick={handleBlocking}>
+                {loadingBlocking ? "Loading..." : "Blocking"}
+            </Button>
+            <Button disabled={loadingBackground} onClick={handleBackground}>
+                {loadingBackground ? "Loading..." : "Background"}
             </Button>
         </div> 
     );

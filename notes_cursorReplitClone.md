@@ -260,6 +260,14 @@
     - **How about later, we make a route to take prompt input from user and send it directly to the AI**
     - Now let's plug that into our app, and see how differently it behaves
     - Now copy paste the `app/api/demo/blocking` folder as `app/api/demo/background`  
+    >- GOTO `app/api/demo/background/route.ts` file
+
+- Once we have done learning about background jobs, that is
+    - With background jobs handled by inngest we can invoke the function multiple times
+    - The user is also free
+    - And later we will use `AgentKit by inngest` to make our agent perform various tasks
+    - Thought is to create a network of agents to orcastrate creation of projects in our IDE
+    - Make sure to read the documentaion for installing and using Anthropic AI agents for this IDE
 
 
 ------------------------------------------------------------------------------
