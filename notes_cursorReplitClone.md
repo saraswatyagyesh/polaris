@@ -238,6 +238,21 @@
     - In order to connect inngest to our project we need to create `src/inngest/client.ts`
     >- GOTO `src/inngest/client.ts`
 
+- Once we understand things from `/demo/page.tsx` file, we can now move onto `INNGEST`
+- For `Inngest`, we have to do
+    - We should be using an API route, to trigger a background job and immediately tell the user that background job is triggered you can carry on.
+    - It's complition will give a notification, this can be done with inngest
+    - Visit the inngest's documentation, they offer an accountless setup.
+    - Simply start with NextJS part
+    - Run, `npm install inngest@3.48.1` to install inngest
+    - Then we have to run the inngest developer server **which is fast, in-memory version of inngest where you can quickly send and view events and function runs** 
+        - Simply go to inngest document website and find the comand for this
+        - Earlier it was `npm --ignore-script=false inngest-cli@latest dev`
+        - You can run this command or better, search the documentation for this 
+        - This will run a quick instance of inngest on **port 8288**
+        - At this port you will give you a dashboard    
+    - To connect inngest to our project, we need to create `/src/inngest/client.ts`
+>- GOT `src/inngest/client.ts` file
 
 
 ------------------------------------------------------------------------------
