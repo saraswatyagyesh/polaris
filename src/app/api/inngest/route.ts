@@ -10,13 +10,14 @@
     - We will now create our very first function as `src/inngest/functions.ts` file
     - GOTO `src/inngest/functions.ts` file
 
-
+- Once you register the demoGenerate function here, go to notes.md file to learn about non-blocking
+    - Bcoz that is what we will perform with inngest and all this setup
 ----------------------------------------------------------------------------------------------------*/
 
 // paste the content of documentation mentioned there for this file 
 import { serve } from "inngest/next";
 import { inngest } from "@/inngest/client";
-import { helloWorld } from "@/inngest/functions";
+import { demoGenerate } from "@/inngest/functions";
 
 // create an API that serves zero functions
 export const { GET, POST, PUT } = serve({
@@ -24,7 +25,7 @@ export const { GET, POST, PUT } = serve({
     functions: [
         /* Your function will be passed here later */
         // We have come here from `src/inngest/functions.ts` file to register our function helloWorld
-        helloWorld, // make sure to import it tooo
+        demoGenerate, // make sure to import it tooo
     ]
 })
 // After saving this, goto top to understand what will happen in the dashboard we got earlier

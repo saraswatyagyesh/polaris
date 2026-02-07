@@ -14,17 +14,38 @@
         "data" : { "bussiness@codewithyagyesh.com" }
     }
     - And invoke it, this will wait for a moment and sent the data we structured here in return statememt
-    
+
+- We have tested the helloWorld function earlier in previous commit
+    - Here now we will go for demoGenerate fucntion
 
 --------------------------------------------------------------------------------------------------------------*/
+import { google } from "@ai-sdk/google";
 import { inngest } from "./client";
+import { generateText } from "ai";
 
-export const helloWorld = inngest.createFunction(
-    { id: "hello-world" },
-    { event: "test/hello.world" },
-    async ({ event, step }) => {
-        await step.sleep("wait-a-moment", "1s");
-        return{ message: `Hello ${event.data.email}!` };
+// export const helloWorld = inngest.createFunction(
+//     { id: "hello-world" },
+//     { event: "test/hello.world" },
+//     async ({ event, step }) => {
+//         await step.sleep("wait-a-moment", "1s");
+//         return{ message: `Hello ${event.data.email}!` };
+//     },
+// );
+
+// before going to top, GOTO `src/app/api/inngest/routes.ts` to setup a new function
+
+
+// Going for demoGenerate function
+export const demoGenerate = inngest.createFunction(
+    { id: "demo-generate" },
+    { event: "demo/generate" },
+    async ({ step }) => {
+        await step.run("generate-text", async() => {
+            return await generateText({
+                    model: google('gemini-2.5-flash'),
+                    prompt: 'Write a summary of Three men in a boat',
+                });
+        })
     },
 );
-// before going to top, GOTO `src/app/api/inngest/routes.ts` to setup a new function
+// GOTO `src/app/api/inngest/route.ts` file to change

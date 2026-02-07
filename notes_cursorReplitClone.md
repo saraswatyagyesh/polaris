@@ -254,6 +254,13 @@
     - To connect inngest to our project, we need to create `/src/inngest/client.ts`
 >- GOT `src/inngest/client.ts` file
 
+- Once you register the `demoGenerate` function in the `src/app/api/inngest/route.ts` file
+    - You can now re run both of the commands and invoke the function
+    - It will run in the backend side, doing the job, asking the AI your predecided prompt 
+    - **How about later, we make a route to take prompt input from user and send it directly to the AI**
+    - Now let's plug that into our app, and see how differently it behaves
+    - Now copy paste the `app/api/demo/blocking` folder as `app/api/demo/background`  
+
 
 ------------------------------------------------------------------------------
 # 6 Firecrawl AI
