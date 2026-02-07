@@ -273,6 +273,15 @@
 ------------------------------------------------------------------------------
 # 6 Firecrawl AI
 
+- In this section we will add firecrawlAI and why do we even need it
+    - Demonstate outdated AI code patterns
+    - Set up firecrawl web scrapping
+    - Extract URLs from user prompts
+    - Enhance prompts with live documentation
+
+- Basically AI models have a `knowledge cut-off` **IMPORTANT**
+    - Meaning jaha tak train kara uske aage ka unko knowledge nhi hota jyada tar, like when we work with latest versions of framworks 
+    - With firecrawl, we can help AI to learn after it's cut-off date too
 
 
 ------------------------------------------------------------------------------
