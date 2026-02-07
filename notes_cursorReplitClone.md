@@ -206,7 +206,68 @@
 # 5 Background Jobs
 
 - Now Let's begin with setting up our background jobs
+    - Setup AI SDK
+    - Create blocking API route
+    - setup inngest SDK
+    - Create background job
+    - Compare: blocking vs non-blocking
 
+- Setting up AI SDK
+    - For installing the `AI SDK` run `npm i ai@6.0.3` 
+    - Then in the documentation, click to `Providers and models`
+    - It is recommended to use `Anthropic AI providers` because they are dope
+    - In here, we will setup `AI SDK Google` and `AI SDK anthropic` 
+    - Google is free, while Anthropic costs arounf 5 Dollars
+
+- Setting up Google AI provider
+    - To install it, run `npm install @ai-sdk/google@3.0.1` 
+    - Now we will setup an API route in our app, through creating `src/app/api/demo/blocking/route.ts` folder
+    - With this we will create `localhost:3000/api/demo/blocking` and will use googl's AI at this endpoint
+    >- GOTO `blocking/route.ts`
+
+- Once we have setup the API Route for Google's AI and it's UI
+    - We can now start with the Inngest route, (Non-blocking)
+    - As blocking takes too much time 
+
+- Let's start with `Inngest`
+    - Untill it does not come to deployment, you don't primarily need an account setup for inngest at all. 
+    - Simply go to the documentation and start with NextJS section
+    - To install inngest run `npm install inngest@3.48.1` 
+    - Next we have to run innges dev server by running `npm --ignore-script=false inngest-cli@latest dev`
+    - It will spin up a local instance of inngest at `localhost:8288`
+    - In order to connect inngest to our project we need to create `src/inngest/client.ts`
+    >- GOTO `src/inngest/client.ts`
+
+- Once we understand things from `/demo/page.tsx` file, we can now move onto `INNGEST`
+- For `Inngest`, we have to do
+    - We should be using an API route, to trigger a background job and immediately tell the user that background job is triggered you can carry on.
+    - It's complition will give a notification, this can be done with inngest
+    - Visit the inngest's documentation, they offer an accountless setup.
+    - Simply start with NextJS part
+    - Run, `npm install inngest@3.48.1` to install inngest
+    - Then we have to run the inngest developer server **which is fast, in-memory version of inngest where you can quickly send and view events and function runs** 
+        - Simply go to inngest document website and find the comand for this
+        - Earlier it was `npm --ignore-script=false inngest-cli@latest dev`
+        - You can run this command or better, search the documentation for this 
+        - This will run a quick instance of inngest on **port 8288**
+        - At this port you will give you a dashboard    
+    - To connect inngest to our project, we need to create `/src/inngest/client.ts`
+>- GOT `src/inngest/client.ts` file
+
+- Once you register the `demoGenerate` function in the `src/app/api/inngest/route.ts` file
+    - You can now re run both of the commands and invoke the function
+    - It will run in the backend side, doing the job, asking the AI your predecided prompt 
+    - **How about later, we make a route to take prompt input from user and send it directly to the AI**
+    - Now let's plug that into our app, and see how differently it behaves
+    - Now copy paste the `app/api/demo/blocking` folder as `app/api/demo/background`  
+    >- GOTO `app/api/demo/background/route.ts` file
+
+- Once we have done learning about background jobs, that is
+    - With background jobs handled by inngest we can invoke the function multiple times
+    - The user is also free
+    - And later we will use `AgentKit by inngest` to make our agent perform various tasks
+    - Thought is to create a network of agents to orcastrate creation of projects in our IDE
+    - Make sure to read the documentaion for installing and using Anthropic AI agents for this IDE
 
 
 ------------------------------------------------------------------------------
