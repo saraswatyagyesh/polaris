@@ -24,7 +24,7 @@
 
 - To modify this project
     >- GOTO `src/app/page.tsx`
-
+scm-history-item:/media/ubuntu/LINUX1/CODE%20FORGE/NextJS/04cursorReplitClone/Sandbox1/polaris?%7B%22repositoryId%22%3A%22scm0%22%2C%22historyItemId%22%3A%22c6acf200d8118a7f26baad34c56258525ec7d30d%22%2C%22historyItemParentId%22%3A%225087bd579425a27489a172fae6f6916399c5e56c%22%2C%22historyItemDisplayId%22%3A%22c6acf20%22%7D
 
 >- Installing `shadcn/ui`    
 - For this,
