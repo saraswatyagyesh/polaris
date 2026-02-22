@@ -280,8 +280,14 @@ scm-history-item:/media/ubuntu/LINUX1/CODE%20FORGE/NextJS/04cursorReplitClone/Sa
     - Enhance prompts with live documentation
 
 - Basically AI models have a `knowledge cut-off` **IMPORTANT**
-    - Meaning jaha tak train kara uske aage ka unko knowledge nhi hota jyada tar, like when we work with latest versions of framworks 
+    - Meaning jaha tak train kara uske aage ka unko knowledge nhi hota jyada tar, like when we work with latest versions of frameworks 
     - With firecrawl, we can help AI to learn after it's cut-off date too
+    - Allowing the websites to be data for our LLMs, this is called `web scrapping`
+    - Create an account on firecrawl, open the documentation
+        - Now to create a `singleton` or `client` for firecrawl, get the API key
+        - To install firecrawl, run `npm i @mendable/firecrawl-js`
+        - Now create `/src/lib/firecrawl.ts`
+        >- GOTO `/src/lib/firecrawl.ts` file
 
 
 ------------------------------------------------------------------------------
