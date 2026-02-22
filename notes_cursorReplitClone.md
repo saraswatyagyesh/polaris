@@ -293,7 +293,14 @@ scm-history-item:/media/ubuntu/LINUX1/CODE%20FORGE/NextJS/04cursorReplitClone/Sa
 ------------------------------------------------------------------------------
 # 7 Error tracking
 
+- In this chapter our goals are
+    - Setup sentry with Next.js wizard
+    - Catch background job failure with inngest
+    - Monitor AI calls and token usage
+    - Add structure logs for user interactions
+    - Implement user context for better debugging
 
+    
 
 ------------------------------------------------------------------------------
 # 8 Projects

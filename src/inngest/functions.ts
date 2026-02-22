@@ -23,6 +23,8 @@
     - This will be done by using scrape function of firecrawl
     - But first we need to extract the URL from the prompt
     - Bcoz, that's how firecrawl API accepts data
+
+- GOTO notes.md file, once firecrawl webscaping is setup
 --------------------------------------------------------------------------------------------------------------*/
 import { google } from "@ai-sdk/google";
 import { inngest } from "./client";
