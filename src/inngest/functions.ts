@@ -23,19 +23,6 @@
     - This will be done by using scrape function of firecrawl
     - But first we need to extract the URL from the prompt
     - Bcoz, that's how firecrawl API accepts data
-
-- GOTO notes.md file, once firecrawl webscaping is setup
-
-- In this section, we will create a background job in this function
-    - For error tracking
-    - As demoError()
-    - In order to make it function properly, we need to go into `/src/app/api/inngest/route.ts` file
-        - And register this function there
-
-- After telemetry is added in `src/app/api/demo/blocking/route.ts` file, we will come back here
-    - And we will add telemetry here as well
-    - After the generate text
-    - GOTO notes.md file
 --------------------------------------------------------------------------------------------------------------*/
 import { google } from "@ai-sdk/google";
 import { inngest } from "./client";
@@ -90,26 +77,8 @@ export const demoGenerate = inngest.createFunction(
             return await generateText({
                 model: google('gemini-2.5-flash'),
                 prompt: finalPrompt,
-
-                // Paste the telemetry here
-                experimental_telemetry: {
-                    isEnabled: true,
-                    recordInputs: true,
-                    recordOutputs: true,
-                } // comment it out if depricated
             });
         })
     },
 );
 // GOTO `src/app/api/inngest/route.ts` file to change
-
-
-export const demoError = inngest.createFunction(
-    { id: "demo-error" },
-    { event: "demo/error" },
-    async ({ event, step }) => {
-        await step.run("throw-error", async () => {
-            throw new Error("Inngest error: Something went wrong in the background job!");
-        });
-    }
-)

@@ -293,48 +293,6 @@ scm-history-item:/media/ubuntu/LINUX1/CODE%20FORGE/NextJS/04cursorReplitClone/Sa
 ------------------------------------------------------------------------------
 # 7 Error tracking
 
-- In this chapter our goals are
-    - To add production grade error tracking and monitoring to our app
-        - That is, to make our app production ready rather than flying blind
-    - Setup sentry with Next.js wizard
-    - Catch background job failure with inngest
-    - Monitor AI calls and token usage
-    - Add structure logs for user interactions
-    - Implement user context for better debugging
-
-- To run inngest CLI, run `npx --ignore-scripts=false inngest-cli@latest dev`
-    - Also make sure your dev server is also running
-    >- GOTO `/src/app/api/demo/page.tsx` file to prepare for client error
-
-- Now let's setup `sentry` for out app to catch errors 
-    - In the dashboard, select `Next.js` and then 
-    - Rename the `project slug` to `polaris`
-    - Once you create an account you'll get an install script
-    - Paste the command in your terminal
-    - Copy the authentication token to your env variables
-    - And no we're not using mcp servers for now
-    - The `/src/app/sentry-example-page` is a page that we created for testing
-    - The `/src/app/api/sentry-example-api` is an API route that we created for testing
-    - You can visit this route at `localhost:3000/sentry-example-page` and `localhost:3000/api/sentry-example-api` for error logging and tracking
-    - In the dashboard of sentry website we can monitor these logs and make sense of them
-    - There you can see the `Session Replay` tab, where you can see the user interactions
-    - Now if we throw an error in our app, we can catch it and track it
-    - To add inngest error, we can add a middleware
-    - To install middleware, run `npm i @inngest/middleware-sentry`
-    - Now we need to import our middleware into innngest client file 
-    - That is in `/src/inngest/client.ts`
-        >- GOTO `/src/inngest/client.ts` file
-    
-    - We can monitor our token count too
-        - Use the sentry documentation for vercel 
-        - This will be done in `/sentry.edge.config.ts` file
-        >- GOTO `/sentry.edge.config.ts` file
-
-    - Once done, we have to find place where we calling `generate Text`
-    - After the prompt we add `experimental-telemetry`
-        - In case depricated, use the `telemetry` name itself
-        - Once telemetry is installed, you will need to send data too for prompts
-        >- GOTO `/api/demo/blocking/routes.ts` file to add telemetry
 
 
 ------------------------------------------------------------------------------
