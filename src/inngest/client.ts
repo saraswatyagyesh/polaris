@@ -8,7 +8,7 @@
 
 - Import the sentry middleware in this file
     - Then add it, so that it can intercept our background jobs for error tracking and logging
-    
+    - Then goto notes.md file
 
 
 
