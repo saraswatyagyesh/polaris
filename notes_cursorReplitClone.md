@@ -348,6 +348,8 @@ scm-history-item:/media/ubuntu/LINUX1/CODE%20FORGE/NextJS/04cursorReplitClone/Sa
 
 - Now before we begin, let's do some cleaning,
     - Remove all the `examples and demo` folders 
+    - After that find the `/convex/schema.ts` file
+    >- GOTO `/convex/schema.ts` file
 
 ------------------------------------------------------------------------------
 # 9 IDE layout
