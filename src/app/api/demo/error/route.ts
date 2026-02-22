@@ -7,26 +7,6 @@
         - As `/src/app/api/demo/inngest-error/route.ts`file
         >- GOTO `src/app/api/demo/inngest-error/route.ts`
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 --------------------------------------------------------------------------------------------*/
 export async function POST() {
     throw new Error("API error: Something went wrong on the server");

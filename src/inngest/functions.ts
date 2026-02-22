@@ -30,6 +30,7 @@
     - For error tracking
     - As demoError()
     - In order to make it function properly, we need to go into `/src/app/api/inngest/route.ts` file
+        - And register this function there
 --------------------------------------------------------------------------------------------------------------*/
 import { google } from "@ai-sdk/google";
 import { inngest } from "./client";
