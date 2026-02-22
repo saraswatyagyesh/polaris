@@ -311,7 +311,19 @@ scm-history-item:/media/ubuntu/LINUX1/CODE%20FORGE/NextJS/04cursorReplitClone/Sa
     - Rename the `project slug` to `polaris`
     - Once you create an account you'll get an install script
     - Paste the command in your terminal
-    - 
+    - Copy the authentication token to your env variables
+    - And no we're not using mcp servers for now
+    - The `/src/app/sentry-example-page` is a page that we created for testing
+    - The `/src/app/api/sentry-example-api` is an API route that we created for testing
+    - You can visit this route at `localhost:3000/sentry-example-page` and `localhost:3000/api/sentry-example-api` for error logging and tracking
+    - In the dashboard of sentry website we can monitor these logs and make sense of them
+    - There you can see the `Session Replay` tab, where you can see the user interactions
+    - Now if we throw an error in our app, we can catch it and track it
+    - To add inngest error, we can add a middleware
+    - To install middleware, run `npm i @inngest/middleware-sentry`
+    - Now we need to import our middleware into innngest client file 
+    - That is in `/src/inngest/client.ts`
+    >- GOTO `/src/inngest/client.ts` file
 
 ------------------------------------------------------------------------------
 # 8 Projects
