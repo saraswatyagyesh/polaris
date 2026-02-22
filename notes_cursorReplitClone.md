@@ -306,6 +306,13 @@ scm-history-item:/media/ubuntu/LINUX1/CODE%20FORGE/NextJS/04cursorReplitClone/Sa
     - Also make sure your dev server is also running
     >- GOTO `/src/app/api/demo/page.tsx` file to prepare for client error
 
+- Now let's setup `sentry` for out app to catch errors 
+    - In the dashboard, select `Next.js` and then 
+    - Rename the `project slug` to `polaris`
+    - Once you create an account you'll get an install script
+    - Paste the command in your terminal
+    - 
+
 ------------------------------------------------------------------------------
 # 8 Projects
 
