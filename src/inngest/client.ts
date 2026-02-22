@@ -6,7 +6,9 @@
 
 - okay, now create `src/app/api/inngest/route.ts` file and go there
 
-
+- Import the sentry middleware in this file
+    - Then add it, so that it can intercept our background jobs for error tracking and logging
+    - Then goto notes.md file
 
 
 
@@ -14,9 +16,13 @@
 ------------------------------------------------------------------------------------------------------------------------------*/
 
 import { Inngest } from "inngest";
+import { sentryMiddleware } from "@inngest/middleware-sentry";
 
 // client to send and recieve emails
-export const inngest = new Inngest ({ id: "polaris" });
+export const inngest = new Inngest({
+    id: "polaris",
+    middleware: [sentryMiddleware()]
+});
 
 // Register this to an API route
 // make sure app is running
