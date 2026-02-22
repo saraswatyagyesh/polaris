@@ -339,7 +339,7 @@ scm-history-item:/media/ubuntu/LINUX1/CODE%20FORGE/NextJS/04cursorReplitClone/Sa
 
 ------------------------------------------------------------------------------
 # 8 Projects
-
+- Projects will be setup here
 
 ------------------------------------------------------------------------------
 # 9 IDE layout
