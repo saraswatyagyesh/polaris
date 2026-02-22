@@ -323,7 +323,19 @@ scm-history-item:/media/ubuntu/LINUX1/CODE%20FORGE/NextJS/04cursorReplitClone/Sa
     - To install middleware, run `npm i @inngest/middleware-sentry`
     - Now we need to import our middleware into innngest client file 
     - That is in `/src/inngest/client.ts`
-    >- GOTO `/src/inngest/client.ts` file
+        >- GOTO `/src/inngest/client.ts` file
+    
+    - We can monitor our token count too
+        - Use the sentry documentation for vercel 
+        - This will be done in `/sentry.edge.config.ts` file
+        >- GOTO `/sentry.edge.config.ts` file
+
+    - Once done, we have to find place where we calling `generate Text`
+    - After the prompt we add `experimental-telemetry`
+        - In case depricated, use the `telemetry` name itself
+        - Once telemetry is installed, you will need to send data too for prompts
+        >- GOTO `/api/demo/blocking/routes.ts` file to add telemetry
+
 
 ------------------------------------------------------------------------------
 # 8 Projects

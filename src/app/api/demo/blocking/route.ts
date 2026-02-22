@@ -11,6 +11,9 @@
 - Then we will create a /src/app/demo folder and a page.tsx file in it
     - GOTO demo/page.tsx
 
+- After sentry is added, we will add telemetry after our prompt
+    - We're doing this to keep track of the tokens
+    - Copy the telemetry code and GOTO `/inngest/functions.ts` file
     
 -----------------------------------------------------------------------------------------------*/
 import { generateText } from "ai";
@@ -26,6 +29,11 @@ export async function POST() {
     const response = await generateText({
         model: google('gemini-2.5-flash'),
         prompt: 'Write a short story about a robot learning to paint',
+        experimental_telemetry: {
+            isEnabled: true,
+            recordInputs: true,
+            recordOutputs: true,
+        } // comment it out if depricated
     });
 
     return Response.json({ response });
