@@ -24,7 +24,7 @@
 
 - To modify this project
     >- GOTO `src/app/page.tsx`
-
+scm-history-item:/media/ubuntu/LINUX1/CODE%20FORGE/NextJS/04cursorReplitClone/Sandbox1/polaris?%7B%22repositoryId%22%3A%22scm0%22%2C%22historyItemId%22%3A%22c6acf200d8118a7f26baad34c56258525ec7d30d%22%2C%22historyItemParentId%22%3A%225087bd579425a27489a172fae6f6916399c5e56c%22%2C%22historyItemDisplayId%22%3A%22c6acf20%22%7D
 
 >- Installing `shadcn/ui`    
 - For this,
@@ -273,6 +273,21 @@
 ------------------------------------------------------------------------------
 # 6 Firecrawl AI
 
+- In this section we will add firecrawlAI and why do we even need it
+    - Demonstate outdated AI code patterns
+    - Set up firecrawl web scrapping
+    - Extract URLs from user prompts
+    - Enhance prompts with live documentation
+
+- Basically AI models have a `knowledge cut-off` **IMPORTANT**
+    - Meaning jaha tak train kara uske aage ka unko knowledge nhi hota jyada tar, like when we work with latest versions of frameworks 
+    - With firecrawl, we can help AI to learn after it's cut-off date too
+    - Allowing the websites to be data for our LLMs, this is called `web scrapping`
+    - Create an account on firecrawl, open the documentation
+        - Now to create a `singleton` or `client` for firecrawl, get the API key
+        - To install firecrawl, run `npm i @mendable/firecrawl-js`
+        - Now create `/src/lib/firecrawl.ts`
+        >- GOTO `/src/lib/firecrawl.ts` file
 
 
 ------------------------------------------------------------------------------

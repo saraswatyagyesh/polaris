@@ -18,10 +18,16 @@
 - We have tested the helloWorld function earlier in previous commit
     - Here now we will go for demoGenerate fucntion
 
+- we came here from `firecrawl.ts` file to update this function  
+    - Meaning, we'll allow this background job to extract the URL from our prompt
+    - This will be done by using scrape function of firecrawl
+    - But first we need to extract the URL from the prompt
+    - Bcoz, that's how firecrawl API accepts data
 --------------------------------------------------------------------------------------------------------------*/
 import { google } from "@ai-sdk/google";
 import { inngest } from "./client";
 import { generateText } from "ai";
+import { firecrawl } from "@/lib/firecrawl";
 
 // export const helloWorld = inngest.createFunction(
 //     { id: "hello-world" },
@@ -35,16 +41,43 @@ import { generateText } from "ai";
 // before going to top, GOTO `src/app/api/inngest/routes.ts` to setup a new function
 
 
+const URL_REGEX = /https?:\/\/[^\s]+/g;
+
 // Going for demoGenerate function
 export const demoGenerate = inngest.createFunction(
     { id: "demo-generate" },
     { event: "demo/generate" },
-    async ({ step }) => {
-        await step.run("generate-text", async() => {
+    async ({ event, step }) => {
+
+        const { prompt } = event.data as { prompt: string };
+
+        // Extract all URLs from users query
+        const urls = await step.run("extract-urls", async () => {
+            return prompt.match(URL_REGEX) ?? [];
+        }) as string[];
+
+        // scrape the content using firecrawl
+        const scrapedContent = await step.run("scrape-url", async () => {
+            const results = await Promise.all(
+                urls.map(async (url) => {
+                    const result = await firecrawl.scrape(
+                        url,
+                        { formats: ["markdown"] },
+                    );
+                    return result.markdown ?? null;
+                })
+            );
+            return results.filter(Boolean).join("\n\n");
+        });
+
+        // generating final prompt
+        const finalPrompt = scrapedContent ? `Context:\n${scrapedContent}\n\nQuestion: ${prompt}` : prompt;
+
+        const result = await step.run("generate-text", async () => {
             return await generateText({
-                    model: google('gemini-2.5-flash'),
-                    prompt: 'Write a summary of Three men in a boat',
-                });
+                model: google('gemini-2.5-flash'),
+                prompt: finalPrompt,
+            });
         })
     },
 );
