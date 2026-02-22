@@ -26,21 +26,6 @@
     - With non blocking multiple background jobs can be triggered 
     - GOTO notes.md for further details about AgentKit
 
-
-- In this chapter we will work on error tracking
-    - We've come here to prepare for a scenario of client error
-    - This error can happen due to various reasons
-    - We'll add handleClientError() for that
-    - Next we'll setup handleApiError() for API errors
-    - In case of innngest error, it will successfully do a fetch error, but
-        - Background job will throw an error
-        - Scenario in handleInngestError()
-    - When the error buttons are pressed only the client and us, in this demo only, will know that something is wrong in browser
-    - In production, this will not be known to us
-    - We need to be aware of all the errors that happen, 
-        - Be it client side, server side, or background job
-    - To demonstrate this error, we need to create `/app/api/demo/error/route.ts` file
-    >- GOTO `src/app/api/demo/error/route.ts`
 ------------------------------------------------------------------------------------------------------------------*/
 
 import { Button } from "@/components/ui/button";
@@ -53,7 +38,7 @@ export default function DemoPage() {
     // create a handleBlocking function 
     const handleBlocking = async () => {
         setLoadingBlocking(true);
-        await fetch("api/demo/blocking", { method: "POST" });
+        await fetch("api/demo/blocking", {method: "POST"});
         setLoadingBlocking(false);
     };
 
@@ -62,42 +47,17 @@ export default function DemoPage() {
         await fetch("/api/demo/background", { method: "POST" });
         setLoadingBackground(false);
     };
-
-    // 1) Client error - throws in the browser
-    const handleClientError = () => {
-        throw new Error("Client error: Something went wrong in the browser!");
-    };
-
-    // 2) API error - trigger server-side error
-    const handleApiError = async () => {
-        await fetch("/api/demo/error", { method: "POST" });
-    };
-
-    // 3) Inngest error - triggers error in background job
-    const handleInngestError = async () => {
-        await fetch("/api/demo/inngest-error", { method: "POST" });
-    };
-
-
+    
+    
     return (
         <div className="p-8 space-x-4">
-
             <Button disabled={loadingBlocking} onClick={handleBlocking}>
                 {loadingBlocking ? "Loading..." : "Blocking"}
             </Button>
-
             <Button disabled={loadingBackground} onClick={handleBackground}>
                 {loadingBackground ? "Loading..." : "Background"}
             </Button>
-
-            {/* Setting up error handling buttons */}
-            <Button variant="destructive" onClick={handleClientError}>Client Error</Button>
-
-            <Button variant="destructive" onClick={handleApiError}>API Error</Button>
-
-            <Button variant="destructive" onClick={handleInngestError}>Inngest Error</Button>
-
-        </div>
+        </div> 
     );
 };
 
