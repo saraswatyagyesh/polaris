@@ -339,7 +339,15 @@ scm-history-item:/media/ubuntu/LINUX1/CODE%20FORGE/NextJS/04cursorReplitClone/Sa
 
 ------------------------------------------------------------------------------
 # 8 Projects
-- Projects will be setup here
+- In this section, we will create the `Projects page`
+- This includes
+    - Landing page with polaris branding
+    - Build project creation and get feature
+    - Create project list layout
+    - Add keyboard shortcuts and command palette
+
+- Now before we begin, let's do some cleaning,
+    - Remove all the `examples and demo` folders 
 
 ------------------------------------------------------------------------------
 # 9 IDE layout
