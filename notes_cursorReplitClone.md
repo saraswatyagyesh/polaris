@@ -294,13 +294,17 @@ scm-history-item:/media/ubuntu/LINUX1/CODE%20FORGE/NextJS/04cursorReplitClone/Sa
 # 7 Error tracking
 
 - In this chapter our goals are
+    - To add production grade error tracking and monitoring to our app
+        - That is, to make our app production ready rather than flying blind
     - Setup sentry with Next.js wizard
     - Catch background job failure with inngest
     - Monitor AI calls and token usage
     - Add structure logs for user interactions
     - Implement user context for better debugging
 
-    
+- To run inngest CLI, run `npx --ignore-scripts=false inngest-cli@latest dev`
+    - Also make sure your dev server is also running
+    >- GOTO `/src/app/api/demo/page.tsx` file to prepare for client error
 
 ------------------------------------------------------------------------------
 # 8 Projects

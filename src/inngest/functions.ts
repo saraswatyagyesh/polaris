@@ -25,6 +25,11 @@
     - Bcoz, that's how firecrawl API accepts data
 
 - GOTO notes.md file, once firecrawl webscaping is setup
+
+- In this section, we will create a background job in this function
+    - For error tracking
+    - As demoError()
+    - In order to make it function properly, we need to go into `/src/app/api/inngest/route.ts` file
 --------------------------------------------------------------------------------------------------------------*/
 import { google } from "@ai-sdk/google";
 import { inngest } from "./client";
@@ -84,3 +89,14 @@ export const demoGenerate = inngest.createFunction(
     },
 );
 // GOTO `src/app/api/inngest/route.ts` file to change
+
+
+export const demoError = inngest.createFunction(
+    { id: "demo-error" },
+    { event: "demo/error" },
+    async ({ event, step }) => {
+        await step.run("throw-error", async () => {
+            throw new Error("Inngest error: Something went wrong in the background job!");
+        });
+    }
+)
